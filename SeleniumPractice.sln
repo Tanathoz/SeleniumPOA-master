@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumPractice", "SeleniumPractice\SeleniumPractice.csproj", "{27A22467-F96C-4444-9205-A1A7D7212753}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3C192608-8CAC-4DB3-86A6-6C99545DED27}"
+	ProjectSection(SolutionItems) = preProject
+		Nuget.Config = Nuget.Config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27A22467-F96C-4444-9205-A1A7D7212753}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27A22467-F96C-4444-9205-A1A7D7212753}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27A22467-F96C-4444-9205-A1A7D7212753}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27A22467-F96C-4444-9205-A1A7D7212753}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95F93C14-CAED-4ACD-B307-23E04916A316}
+	EndGlobalSection
+EndGlobal
