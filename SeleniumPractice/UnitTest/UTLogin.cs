@@ -50,7 +50,7 @@ namespace SeleniumPractice.UnitTest
         public void PasswordFail()
         {
             bool resultado = false;
-            objLogin.LoginFail(driver, usuario, "Fake1234");
+            objLogin.LoginFail(driver, "sdsd", "Fake1234");
             resultado = objLogin.DevolverResultado();
             Assert.AreEqual(true, resultado);
         }
