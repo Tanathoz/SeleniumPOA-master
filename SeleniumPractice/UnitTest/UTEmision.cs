@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-
 using System.Configuration;
 using SeleniumPractice.DataPool;
 using SeleniumPractice.Entities;
 using SeleniumPractice.Flujos;
+using OpenQA.Selenium.Chrome;
 
 namespace SeleniumPractice.UnitTest
 {
@@ -24,7 +20,9 @@ namespace SeleniumPractice.UnitTest
         IWebDriver driver = null;
         List<EntComprobante> lstComprobantes = null;
         bool resultado = false;
-        string fileName = Path.GetFullPath(ConfigurationManager.AppSettings["DataPool"]);
+         string fileName = Path.GetFullPath(ConfigurationManager.AppSettings["DataPool"]);
+        //static string path = "PortalEmision.xlsx";
+       // string fileName = Path.GetFullPath(path);
         string usuario = ConfigurationManager.AppSettings["Usuario"];
         string password = ConfigurationManager.AppSettings["Password"];
         string url = ConfigurationManager.AppSettings["AmbienteQA"];

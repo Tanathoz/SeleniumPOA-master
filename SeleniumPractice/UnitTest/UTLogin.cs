@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System.Configuration;
+using OpenQA.Selenium.Chrome;
 using SeleniumPractice.DataPool;
 using SeleniumPractice.Entities;
 using SeleniumPractice.Flujos;
