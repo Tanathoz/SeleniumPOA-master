@@ -8,6 +8,8 @@ using SeleniumPractice.DataPool;
 using SeleniumPractice.Entities;
 using SeleniumPractice.Flujos;
 using OpenQA.Selenium.Chrome;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace SeleniumPractice.UnitTest
 {
@@ -20,9 +22,11 @@ namespace SeleniumPractice.UnitTest
         IWebDriver driver = null;
         List<EntComprobante> lstComprobantes = null;
         bool resultado = false;
-         string fileName = Path.GetFullPath(ConfigurationManager.AppSettings["DataPool"]);
-        //static string path = "PortalEmision.xlsx";
-       // string fileName = Path.GetFullPath(path);
+       // string folder = Path.GetFullPath(@"\..\..\..\Repositorios\SeleniumPOA-master\SeleniumPOA-master\SeleniumPractice\DataPool\Docs\PortalEmision.xlsx");
+        static string patho = Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+        string fileName =  new Uri(patho.Replace("\\bin\\Debug", "\\DataPool\\Docs\\PortalEmision.xlsx")).LocalPath;
+        //string fileName = Path.GetFullPath(ConfigurationManager.AppSettings["DataPool"]);
+        string pathDriver = new Uri(patho.Replace("\\SeleniumPractice\\bin\\Debug", "\\references")).LocalPath;
         string usuario = ConfigurationManager.AppSettings["Usuario"];
         string password = ConfigurationManager.AppSettings["Password"];
         string url = ConfigurationManager.AppSettings["AmbienteQA"];
@@ -168,8 +172,6 @@ namespace SeleniumPractice.UnitTest
             Assert.AreEqual(true, resultado);
         }
 
-
-
         [Test]
         public void EmitirRecepcionPago()
         {
@@ -247,7 +249,7 @@ namespace SeleniumPractice.UnitTest
 
         public IWebDriver iniciarNavegador()
         {
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(pathDriver);
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(25);
             //  driver.Navigate().GoToUrl("https://oat.reachcore.com/portal/");

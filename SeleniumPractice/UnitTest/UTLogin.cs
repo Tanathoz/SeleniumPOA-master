@@ -26,7 +26,7 @@ namespace SeleniumPractice.UnitTest
         [SetUp]
         public void Inicializar()
         {
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(@"C:\Repositorios\SeleniumPOA-master\SeleniumPOA-master\references");
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(25);
             driver.Navigate().GoToUrl(url);
