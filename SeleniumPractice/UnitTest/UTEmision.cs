@@ -24,7 +24,7 @@ namespace SeleniumPractice.UnitTest
         IWebDriver driver = null;
         List<EntComprobante> lstComprobantes = null;
         bool resultado = false;
-        public static string seleniumHub = "http://localhost:4444/wd/hub";
+        public static string seleniumHub = "http://172.20.112.1:4444/wd/hub";
        // string folder = Path.GetFullPath(@"\..\..\..\Repositorios\SeleniumPOA-master\SeleniumPOA-master\SeleniumPractice\DataPool\Docs\PortalEmision.xlsx");
         static string patho = Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
         string fileName =  new Uri(patho.Replace("\\bin\\Debug", "\\DataPool\\Docs\\PortalEmision.xlsx")).LocalPath;
