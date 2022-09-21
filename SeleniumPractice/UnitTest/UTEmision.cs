@@ -10,6 +10,8 @@ using SeleniumPractice.Flujos;
 using OpenQA.Selenium.Chrome;
 using System.Reflection;
 using System.Diagnostics;
+using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Firefox;
 
 namespace SeleniumPractice.UnitTest
 {
@@ -22,6 +24,7 @@ namespace SeleniumPractice.UnitTest
         IWebDriver driver = null;
         List<EntComprobante> lstComprobantes = null;
         bool resultado = false;
+        public static string seleniumHub = "http://localhost:4444/wd/hub";
        // string folder = Path.GetFullPath(@"\..\..\..\Repositorios\SeleniumPOA-master\SeleniumPOA-master\SeleniumPractice\DataPool\Docs\PortalEmision.xlsx");
         static string patho = Path.GetDirectoryName( System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
         string fileName =  new Uri(patho.Replace("\\bin\\Debug", "\\DataPool\\Docs\\PortalEmision.xlsx")).LocalPath;
@@ -35,8 +38,8 @@ namespace SeleniumPractice.UnitTest
         public void Inicializar()
         {
             lstComprobantes = DaoEmitir.obtenerComprobantesExcel(fileName);
-            driver = iniciarNavegador();
-            //driver = iniciarNavegadorMoziilla();
+           // driver = iniciarNavegador();
+            driver = iniciarNavegadorMoziilla();
             //driver = iniciarNavegadorIE();
             objLogin.Login(driver, usuario, password);
 
@@ -249,9 +252,17 @@ namespace SeleniumPractice.UnitTest
 
         public IWebDriver iniciarNavegador()
         {
-            driver = new ChromeDriver(pathDriver);
+            
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("no-sandbox");
+          //  options.BinaryLocation = @"C:\\Repositorios\\SeleniumPOA-master\\SeleniumPOA-master\\references\\chrome.exe";
+            //driver = new ChromeDriver(ChromeDriverService.CreateDefaultService(),options ,TimeSpan.FromMinutes(3));
+            driver = new ChromeDriver();
+            driver = new RemoteWebDriver(new Uri(seleniumHub),options);
+            
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(25);
+            
             //  driver.Navigate().GoToUrl("https://oat.reachcore.com/portal/");
             driver.Navigate().GoToUrl(url);
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
@@ -260,10 +271,11 @@ namespace SeleniumPractice.UnitTest
 
         public IWebDriver iniciarNavegadorMoziilla()
         {
-            //FirefoxOptions options = new FirefoxOptions();
+            FirefoxOptions options = new FirefoxOptions();
             //options.AddArgument("no-sandbox");
             //options.BrowserExecutableLocation = @"C:\\Users\\Cuauhtemoc.Alcocer\\AppData\\Local\\Mozilla Firefox\\firefox.exe";
             //driver = new FirefoxDriver(FirefoxDriverService.CreateDefaultService(), options, TimeSpan.FromMinutes(3));
+            driver = new RemoteWebDriver(new Uri(seleniumHub), options);
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(25);
             driver.Navigate().GoToUrl(url);
